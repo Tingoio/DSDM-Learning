@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudo de Caso - DSDM</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles/styles.css" />
+    <style>
+      .imagem-centro {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .imagem-centro img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1 id="logo-title">DSDM Learning</h1>
+      <button class="menu-btn">
+        <div class="menu-icon"></div>
+      </button>
+      <nav class="nav-menu">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="estudoDeCaso.html">Estudo de Caso</a>
+        <a href="quizzes.html">Quizzes</a>
+      </nav>
+    </header>
+
+    <main class="sobre">
+      <section class="container fade-in">
+        <div style="text-align: center">
+          <h2>Estudo de Caso</h2>
+          <h2>Sistema de Agendamento Médico</h2>
+        </div>
+
+        <div class="imagem-centro">
+          <img src="src/images/" alt="Problemas com agendamento manual" />
+        </div>
+
+        <p>
+          A Clínica <strong>Vida Saúde</strong> enfrentava sérios problemas na
+          gestão manual de agendamentos, que resultavam em atrasos, erros
+          frequentes e insatisfação dos pacientes. Para superar esses desafios,
+          foi adotado o
+          <strong>Dynamic Systems Development Method (DSDM)</strong> no
+          desenvolvimento de um novo sistema de agendamento digital.
+        </p>
+
+        <p>
+          O DSDM foi escolhido por seu foco em entregas rápidas, envolvimento
+          contínuo dos usuários e flexibilidade controlada, garantindo que as
+          funcionalidades mais importantes fossem priorizadas e entregues de
+          forma incremental e consistente.
+        </p>
+
+        <div class="imagem-centro">
+          <img src="src/images/" alt="Aplicação do DSDM no projeto" />
+        </div>
+
+        <h3>Fases do DSDM aplicadas:</h3>
+        <ul>
+          <li>
+            <strong>Pré-Projeto:</strong> Identificação dos stakeholders e
+            definição dos objetivos estratégicos.
+          </li>
+          <li>
+            <strong>Estudo de Viabilidade:</strong> Avaliação de riscos,
+            orçamento disponível e tecnologias mais adequadas.
+          </li>
+          <li>
+            <strong>Fundação:</strong> Construção do modelo funcional inicial e
+            definição do plano de entregas.
+          </li>
+          <li>
+            <strong>Evolução Iterativa:</strong> Desenvolvimento em ciclos
+            curtos com feedback contínuo dos usuários.
+          </li>
+          <li>
+            <strong>Implementação Incremental:</strong> Entregas parciais como
+            agendamento online, cancelamentos e histórico de consultas.
+          </li>
+        </ul>
+
+        <h3>Técnicas do DSDM utilizadas no projeto:</h3>
+        <ul>
+          <li>
+            <strong>MoSCoW:</strong> Priorização clara das funcionalidades (por
+            exemplo: agendamento de consultas = Must Have; envio de lembretes =
+            Should Have; pesquisa de satisfação = Could Have).
+          </li>
+          <li>
+            <strong>Timeboxing:</strong> Definição de ciclos de duas semanas
+            para entregas regulares e previsíveis.
+          </li>
+          <li>
+            <strong>Prototipagem Evolutiva:</strong> Criação rápida de
+            protótipos para validar as funcionalidades diretamente com médicos e
+            recepcionistas.
+          </li>
+          <li>
+            <strong>Workshops Facilitados:</strong> Sessões colaborativas para
+            mapear os fluxos de agendamento e definir requisitos prioritários.
+          </li>
+          <li>
+            <strong>Modelagem Incremental:</strong> Desenvolvimento progressivo
+            das funcionalidades, iniciando com os módulos essenciais.
+          </li>
+          <li>
+            <strong>Testes Contínuos:</strong> Cada nova funcionalidade foi
+            testada imediatamente após ser desenvolvida, reduzindo erros e
+            retrabalho.
+          </li>
+          <li>
+            <strong>Integração Contínua:</strong> Atualizações frequentes no
+            sistema para garantir estabilidade e compatibilidade.
+          </li>
+          <li>
+            <strong>Comunicação Colaborativa:</strong> Interação diária entre a
+            equipe de desenvolvimento e os usuários finais para garantir
+            alinhamento de expectativas.
+          </li>
+        </ul>
+
+        <p>
+          A aplicação disciplinada dessas práticas permitiu que o projeto se
+          mantivesse ágil, responsivo às mudanças e focado na entrega de valor
+          real para a clínica.
+        </p>
+
+        <p>
+          Como resultado, o sistema foi concluído em apenas três meses, dentro
+          do orçamento planejado, e trouxe melhorias expressivas: redução de 40%
+          no tempo de espera dos pacientes e eliminação de 95% dos erros de
+          agendamento.
+        </p>
+
+        <h3>Benefícios do DSDM neste projeto:</h3>
+        <ul>
+          <li>Entrega rápida de funcionalidades prioritárias;</li>
+          <li>
+            Participação ativa dos médicos e recepcionistas no processo de
+            desenvolvimento;
+          </li>
+          <li>Controle rigoroso de prazos e orçamento;</li>
+          <li>Adaptação eficiente a mudanças de requisitos;</li>
+          <li>Garantia de qualidade através de validações constantes.</li>
+        </ul>
+
+        <div class="imagem-centro">
+          <img
+            src="src/images/"
+            alt="Resultado final: clínica mais eficiente e pacientes satisfeitos"
+          />
+        </div>
+
+        <p>
+          O estudo de caso da Clínica Vida Saúde mostra como o uso estruturado
+          do DSDM pode transformar projetos complexos, entregando soluções
+          eficazes, com alta qualidade e grande aceitação dos usuários finais.
+        </p>
+      </section>
+    </main>
+
+    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+
+    <script src="src/scripts/script.js"></script>
+  </body>
+</html>
