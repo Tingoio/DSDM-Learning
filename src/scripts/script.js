@@ -10,6 +10,14 @@ function startEstudo() {
   window.location.href = "estudoDeCaso.html";
 }
 
+function startMateriaisEducativos() {
+  window.location.href = "materiaisEducativos.html";
+}
+
+function startAprendizagem() {
+  window.location.href = "aprendizagem.html";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".fade-in");
 
