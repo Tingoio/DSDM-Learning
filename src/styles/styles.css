@@ -222,3 +222,26 @@ footer {
 #logo-title {
   cursor: pointer;
 }
+
+iframe{
+  margin-left: 35px;
+}
+
+.video{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.image-variaveis{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  margin: 0%;
+}
+
+.materiais-container {
+  text-align: center;
+  max-width: 800px;
+}
