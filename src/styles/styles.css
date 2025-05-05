@@ -231,3 +231,27 @@ iframe{
   display: block;
   margin: 0 auto;
 }
+
+.back-arrow-link {
+  position: absolute;
+  top: 10px;
+  left: 350px;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.back-arrow {
+  font-size: 2.5rem;
+  color: #4fd1c5;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.back-arrow-link:hover .back-arrow {
+  color: #ffffff;
+}
+
+main {
+  position: relative;
+  padding-top: 20px;
+}
