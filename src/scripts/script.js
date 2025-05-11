@@ -18,6 +18,10 @@ function startAprendizagem() {
   window.location.href = "aprendizagem.html";
 }
 
+function startFaq() {
+  window.location.href = "faq.html";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".fade-in");
 
