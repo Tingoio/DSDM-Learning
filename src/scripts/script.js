@@ -26,6 +26,10 @@ function startFaq() {
   window.location.href = "faq.html";
 }
 
+function startCertificado() {
+  window.location.href = "certificado.html";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".fade-in");
 
