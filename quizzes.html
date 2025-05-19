@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz - DSDM</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="src/styles/styles.css" />
-  </head>
 
-  <body>
-    <header>
-      <h1 id="logo-title">DSDM Learning</h1>
-      <button class="menu-btn">
-        <div class="menu-icon"></div>
+<head>
+  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz - DSDM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="src/styles/styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1 id="logo-title">DSDM Learning</h1>
+    <button class="menu-btn">
+      <div class="menu-icon"></div>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="aprendizagem.html">Aprendizagem</a>
+      <a href="faq.html">FAQ</a>
+      <!--<a href="login.html">Login</a>-->
+    </nav>
+  </header>
+
+  <main class="main-quiz fade-in sobre">
+    <section class="container fade-in hero" id="difficulty-selection">
+      <h2>Escolha a dificuldade:</h2>
+      <button onclick="startQuiz('facil')"><i class="fas fa-circle-check"></i>
+        &nbsp;Fácil</button>
+      <button onclick="startQuiz('medio')"><i class="fas fa-circle-half-stroke"></i>
+
+        &nbsp;Médio</button>
+      <button onclick="startQuiz('dificil')"><i class="fas fa-triangle-exclamation"></i>
+        &nbsp;Difícil</button>
+    </section>
+
+    <section class="container fade-in hero" id="quiz" style="display: none">
+      <h2 id="question-text"></h2>
+      <div id="answers"></div>
+      <button id="next-button" onclick="nextQuestion()" style="display: none">
+        Próxima
       </button>
-      <nav class="nav-menu">
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="aprendizagem.html">Aprendizagem</a>
-        <a href="faq.html">FAQ</a>
-        <!--<a href="login.html">Login</a>-->
-      </nav>
-    </header>
+    </section>
 
-    <main class="main-quiz fade-in sobre">
-      <section class="container fade-in hero" id="difficulty-selection">
-        <h2>Escolha a dificuldade:</h2>
-        <button onclick="startQuiz('facil')">Fácil</button>
-        <button onclick="startQuiz('medio')">Médio</button>
-        <button onclick="startQuiz('dificil')">Difícil</button>
-      </section>
+    <section class="container fade-in hero" id="result" style="display: none">
+      <h2>Resultado</h2>
+      <p id="score"></p>
+      <button onclick="restartQuiz()">Tentar novamente</button>
+    </section>
+  </main>
 
-      <section class="container fade-in hero" id="quiz" style="display: none">
-        <h2 id="question-text"></h2>
-        <div id="answers"></div>
-        <button id="next-button" onclick="nextQuestion()" style="display: none">
-          Próxima
-        </button>
-      </section>
+  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
 
-      <section class="container fade-in hero" id="result" style="display: none">
-        <h2>Resultado</h2>
-        <p id="score"></p>
-        <button onclick="restartQuiz()">Tentar novamente</button>
-      </section>
-    </main>
+  <script src="src/scripts/script.js"></script>
+</body>
 
-    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
-
-    <script src="src/scripts/script.js"></script>
-  </body>
 </html>
