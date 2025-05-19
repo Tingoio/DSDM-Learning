@@ -2,7 +2,7 @@ function startHome() {
   window.location.href = "index.html";
 }
 
-function startQuiz() {
+function startQuizzes() {
   window.location.href = "quizzes.html";
 }
 
