@@ -1,0 +1,6 @@
+@DSDMLearning.API_HostAddress = http://localhost:5008
+
+GET http://localhost:5008/weatherforecast/
+Accept: application/json
+
+###
