@@ -206,3 +206,5 @@ function endQuiz() {
 function restartQuiz() {
   location.reload();
 }
+
+//Responsividade

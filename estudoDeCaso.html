@@ -10,6 +10,10 @@
       rel="stylesheet"
     /> -->
     <link rel="stylesheet" href="src/styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <style>
       .imagem-centro {
         display: flex;
@@ -17,6 +21,7 @@
         margin: 20px 0;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
 
   <body>
@@ -32,6 +37,7 @@
         <a href="faq.html">FAQ</a>
         <!--<a href="login.html">Login</a>-->
       </nav>
+      <div id="user-info" style="display: none"></div>
     </header>
 
     <main class="sobre">
@@ -82,7 +88,7 @@
         </div>
 
         <h3>Fases do DSDM aplicadas:</h3>
-        <ul style="font-size: 1.1rem;">
+        <ul style="font-size: 1.1rem">
           <li>
             <strong>Pré-Projeto:</strong> Identificação dos stakeholders e
             definição dos objetivos estratégicos.
@@ -106,7 +112,7 @@
         </ul>
 
         <h3>Técnicas do DSDM utilizadas no projeto:</h3>
-        <ul style="font-size: 1.1rem;">
+        <ul style="font-size: 1.1rem">
           <li>
             <strong>MoSCoW:</strong> Priorização clara das funcionalidades (por
             exemplo: agendamento de consultas = Must Have; envio de lembretes =
@@ -145,7 +151,7 @@
           </li>
         </ul>
 
-        <br>
+        <br />
 
         <p>
           A aplicação disciplinada dessas práticas permitiu que o projeto se
@@ -168,7 +174,7 @@
           />
         </div>
         <h3>Benefícios do DSDM neste projeto:</h3>
-        <ul style="font-size: 1.1rem;">
+        <ul style="font-size: 1.1rem">
           <li>Entrega rápida de funcionalidades prioritárias;</li>
           <li>
             Participação ativa dos médicos e recepcionistas no processo de
@@ -179,7 +185,7 @@
           <li>Garantia de qualidade através de validações constantes.</li>
         </ul>
 
-        <br>
+        <br />
 
         <p>
           O estudo de caso da Clínica Vida Saúde mostra como o uso estruturado
@@ -191,6 +197,7 @@
 
     <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
 
+    <script src="src/scripts/auth.js"></script>
     <script src="src/scripts/script.js"></script>
   </body>
 </html>
