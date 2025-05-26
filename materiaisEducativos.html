@@ -1,95 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link rel="icon" type="image/png" href="src/images/favicon.png" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DSDM Learning</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="src/styles/styles.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <header>
-      <h1 id="logo-title">DSDM Learning</h1>
-      <button class="menu-btn">
-        <div class="menu-icon"></div>
-      </button>
-      <nav class="nav-menu">
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="aprendizagem.html">Aprendizagem</a>
-        <a href="faq.html">FAQ</a>
-        <!--<a href="login.html">Login</a>-->
-      </nav>
-      <div id="user-info" style="display: none"></div>
-    </header>
+<head>
+  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSDM Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/styles.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <main class="sobre">
-      <a
-        href="javascript:void(0);"
-        onclick="startAprendizagem()"
-        class="back-arrow-link"
-        title="Voltar para Aprendizagem"
-      >
-        <span class="back-arrow">&#10140;</span>
-      </a>
-      <section class="container fade-in">
-        <h2>Materiais Educativos</h2>
+</head>
 
-        <p>
-          Veja alguns vídeos e artigos importantes para sua introdução ao DSDM
-          abaixo.
-        </p>
-        <div class="video">
-          <h2>O que é?</h2>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/KIydGplAVo4"
-            title="DSDM Introduction"
-            frameborder="0"
-          >
-          </iframe>
-        </div>
-        <br />
+<body>
+  <header>
+    <h1 id="logo-title">DSDM Learning</h1>
+    <button class="menu-btn">
+      <div class="menu-icon"></div>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="aprendizagem.html">Aprendizagem</a>
+      <a href="faq.html">FAQ</a>
+      <!--<a href="login.html">Login</a>-->
+    </nav>
+    <div id="user-info" style="display: none"></div>
+  </header>
 
-        <h2>Como funciona e por quê utilizar?</h2>
-        <p>
-          Na gestão tradicional de projetos, o escopo é fixo, enquanto prazo e
-          custo variam. Quando há atrasos, adicionam-se recursos e estende-se o
-          prazo, o que pode piorar ainda mais o atraso. Isso compromete prazos e
-          credibilidade, e, sob pressão, a qualidade costuma ser sacrificada com
-          cortes em testes e controles.
-        </p>
-        <img
-          class="DSDM-variables"
-          width="800px"
-          src="src/images/DSDM-variables.png"
-          alt="DSDM-variables"
-        />
-        <br />
-        <p>
-          Já no DSDM, prazo, custo e qualidade são definidos na fase de
-          Fundamentos, e a contingência é gerenciada pela flexibilidade nos
-          requisitos. Requisitos de menor prioridade podem ser descartados ou
-          adiados conforme necessário, com o acordo das partes interessadas e
-          baseados nas prioridades MoSCoW.
-        </p>
-      </section>
-    </main>
+  <main class="sobre">
+    <a href="javascript:void(0);" onclick="startAprendizagem()" class="back-arrow-link"
+      title="Voltar para Aprendizagem">
+      <span class="back-arrow">&#10140;</span>
+    </a>
+    <section class="container fade-in">
+      <h2>Materiais Educativos</h2>
 
-    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+      <p>
+        Veja alguns vídeos e artigos importantes para sua introdução ao DSDM
+        abaixo.
+      </p>
+      <div class="video">
+        <h2>O que é?</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KIydGplAVo4" title="DSDM Introduction"
+          frameborder="0">
+        </iframe>
+      </div>
+      <br />
 
-    <script src="src/scripts/auth.js"></script>
-    <script src="src/scripts/script.js"></script>
-  </body>
+      <h2>Como funciona e por quê utilizar?</h2>
+      <p>
+        Na gestão tradicional de projetos, o escopo é fixo, enquanto prazo e
+        custo variam. Quando há atrasos, adicionam-se recursos e estende-se o
+        prazo, o que pode piorar ainda mais o atraso. Isso compromete prazos e
+        credibilidade, e, sob pressão, a qualidade costuma ser sacrificada com
+        cortes em testes e controles.
+      </p>
+      <img class="DSDM-variables" width="800px" src="src/images/DSDM-variables.png" alt="DSDM-variables" />
+      <br />
+      <p>
+        Já no DSDM, prazo, custo e qualidade são definidos na fase de
+        Fundamentos, e a contingência é gerenciada pela flexibilidade nos
+        requisitos. Requisitos de menor prioridade podem ser descartados ou
+        adiados conforme necessário, com o acordo das partes interessadas e
+        baseados nas prioridades MoSCoW.
+      </p>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn" style="background-color: #4fd1c5; color: black; font-weight: 600;">
+          <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+
+  <script src="src/scripts/auth.js"></script>
+  <script src="src/scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
