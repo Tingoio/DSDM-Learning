@@ -1,123 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link rel="icon" type="image/png" href="src/images/favicon.png" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quizzes - DSDM Learning</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="src/styles/styles.css" />
-    <link rel="stylesheet" href="src/styles/quiz.css" />
-    <style></style>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <h1 id="logo-title">DSDM Learning</h1>
-      <button class="menu-btn">
-        <div class="menu-icon"></div>
-      </button>
-      <nav class="nav-menu">
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="aprendizagem.html">Aprendizagem</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
-      <div id="user-info" style="display: none"></div>
-    </header>
+<head>
+  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quizzes - DSDM Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="src/styles/styles.css" />
+  <link rel="stylesheet" href="src/styles/quiz.css" />
+  <style></style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
 
-    <main class="sobre">
-      <a
-        href="javascript:void(0);"
-        onclick="startAprendizagem()"
-        class="back-arrow-link"
-        title="Voltar para Aprendizagem"
-      >
-        <span class="back-arrow">&#10140;</span>
-      </a>
-      <section class="quiz-container fade-in">
-        <h2 class="quiz-title">Quizzes DSDM</h2>
-        <p class="quiz-description">
-          Teste seus conhecimentos sobre o Dynamic Systems Development Method
-          (DSDM) com nossos quizzes interativos.
-        </p>
+<body>
+  <header>
+    <h1 id="logo-title">DSDM Learning</h1>
+    <button class="menu-btn">
+      <div class="menu-icon"></div>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="aprendizagem.html">Aprendizagem</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div id="user-info" style="display: none"></div>
+  </header>
 
-        <div id="difficulty-selection">
-          <div>
-            <div class="difficulty-label">
-              <i class="fas fa-star"></i>
-              <span>Nível Fácil</span>
-            </div>
-            <button onclick="startQuiz('facil')">
-              <i class="fas fa-play-circle"></i>Iniciar Quiz Fácil
-            </button>
+  <main class="sobre">
+    <a href="javascript:void(0);" onclick="startAprendizagem()" class="back-arrow-link"
+      title="Voltar para Aprendizagem">
+      <span class="back-arrow">&#10140;</span>
+    </a>
+    <section class="quiz-container fade-in">
+      <h2 class="quiz-title">Quizzes DSDM</h2>
+      <p class="quiz-description">
+        Teste seus conhecimentos sobre o Dynamic Systems Development Method
+        (DSDM) com nossos quizzes interativos.
+      </p>
+
+      <div id="difficulty-selection">
+        <div>
+          <div class="difficulty-label">
+            <i class="fas fa-star"></i>
+            <span>Nível Fácil</span>
           </div>
-
-          <div>
-            <div class="difficulty-label">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span>Nível Médio</span>
-            </div>
-            <button onclick="startQuiz('medio')">
-              <i class="fas fa-play-circle"></i>Iniciar Quiz Médio
-            </button>
-          </div>
-
-          <div>
-            <div class="difficulty-label">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span>Nível Difícil</span>
-            </div>
-            <button onclick="startQuiz('dificil')">
-              <i class="fas fa-play-circle"></i>Iniciar Quiz Difícil
-            </button>
-          </div>
+          <button onclick="startQuiz('facil')">
+            <i class="fas fa-play-circle"></i>Iniciar Quiz Fácil
+          </button>
         </div>
 
-        <div id="quiz">
-          <div id="question-text"></div>
-          <div id="answers"></div>
-          <div class="quiz-buttons">
-            <button id="confirm-button" onclick="confirmAnswer()">
-              <i class="fas fa-check"></i> Confirmar Resposta
-            </button>
-            <button id="next-button" onclick="nextQuestion()">
-              <i class="fas fa-arrow-right"></i> Próxima Pergunta
-            </button>
+        <div>
+          <div class="difficulty-label">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>Nível Médio</span>
           </div>
+          <button onclick="startQuiz('medio')">
+            <i class="fas fa-play-circle"></i>Iniciar Quiz Médio
+          </button>
         </div>
 
-        <div id="result">
-          <h3 class="result-title">Parabéns!</h3>
-          <p class="result-message">Você completou o quiz sobre DSDM.</p>
-          <p id="score"></p>
-          <div class="result-buttons">
-            <button id="restart-button" onclick="restartQuiz()">
-              <i class="fas fa-redo"></i> Tentar Novamente
-            </button>
-            <button id="back-to-learning" onclick="startAprendizagem()">
-              <i class="fas fa-arrow-left"></i> Voltar para Aprendizagem
-            </button>
+        <div>
+          <div class="difficulty-label">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>Nível Difícil</span>
           </div>
+          <button onclick="startQuiz('dificil')">
+            <i class="fas fa-play-circle"></i>Iniciar Quiz Difícil
+          </button>
         </div>
-      </section>
-    </main>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn" style="background-color: #4fd1c5; color: black; font-weight: 600;">
+            <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
+          </button>
+        </div>
+      </div>
 
-    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+      <div id="quiz">
+        <div id="question-text"></div>
+        <div id="answers"></div>
+        <div class="quiz-buttons">
+          <button id="confirm-button" onclick="confirmAnswer()">
+            <i class="fas fa-check"></i> Confirmar Resposta
+          </button>
+          <button id="next-button" onclick="nextQuestion()">
+            <i class="fas fa-arrow-right"></i> Próxima Pergunta
+          </button>
+        </div>
+      </div>
 
-    <script src="src/scripts/auth.js"></script>
-    <script src="src/scripts/script.js"></script>
-    <script src="src/scripts/quiz.js"></script>
-  </body>
+      <div id="result">
+        <h3 class="result-title">Parabéns!</h3>
+        <p class="result-message">Você completou o quiz sobre DSDM.</p>
+        <p id="score"></p>
+        <div class="result-buttons">
+          <button id="restart-button" onclick="restartQuiz()">
+            <i class="fas fa-redo"></i> Tentar Novamente
+          </button>
+          <button id="back-to-learning" onclick="startAprendizagem()">
+            <i class="fas fa-arrow-left"></i> Voltar para Aprendizagem
+          </button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+
+  <script src="src/scripts/auth.js"></script>
+  <script src="src/scripts/script.js"></script>
+  <script src="src/scripts/quiz.js"></script>
+</body>
+
 </html>
