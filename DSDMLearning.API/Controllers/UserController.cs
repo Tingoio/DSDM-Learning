@@ -3,6 +3,8 @@ using DSDMLearning.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace DSDMLearning.API.Controllers
 {
@@ -48,5 +50,34 @@ namespace DSDMLearning.API.Controllers
                 }
             });
         }
+
+        [HttpPut("atualizar-sobre")]
+        [AllowAnonymous] // <- Permite acesso mesmo sem sessão/autenticação
+        public async Task<IActionResult> AtualizarSobre([FromBody] int userId)
+        {
+            var user = await _authService.GetUserByIdAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.Sobre = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'Sobre' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre
+                }
+            });
+        }
+
     }
 }

@@ -28,5 +28,7 @@ namespace DSDMLearning.API.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? LastLogin { get; set; }
+
+        public bool Sobre { get; set; }
     }
 }

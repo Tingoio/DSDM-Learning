@@ -13,7 +13,8 @@ namespace DSDMLearning.API.Middleware
             "/api/auth/login",
             "/api/auth/register",
             "/api/auth/check-session",
-            "/swagger"  // Para permitir acesso ao Swagger
+            "/swagger",  // Para permitir acesso ao Swagger
+            "/api/user/atualizar-sobre",
         };
 
         public SessionAuthMiddleware(RequestDelegate next)

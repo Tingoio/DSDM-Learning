@@ -67,7 +67,8 @@ namespace DSDMLearning.API.Services
                     Username = user.Username,
                     Email = user.Email,
                     FirstName = user.FirstName,
-                    LastName = user.LastName
+                    LastName = user.LastName,
+                    Sobre = user.Sobre
                 }
             };
         }
@@ -109,7 +110,8 @@ namespace DSDMLearning.API.Services
                     Username = user.Username,
                     Email = user.Email,
                     FirstName = user.FirstName,
-                    LastName = user.LastName
+                    LastName = user.LastName,
+                    Sobre = user.Sobre
                 }
             };
         }
@@ -117,6 +119,11 @@ namespace DSDMLearning.API.Services
         public async Task<User> GetUserByIdAsync(int userId)
         {
             return await _context.Users.FindAsync(userId);
+        }
+
+        public async Task SalvarAsync()
+        {
+            await _context.SaveChangesAsync();
         }
 
         private string HashPassword(string password)

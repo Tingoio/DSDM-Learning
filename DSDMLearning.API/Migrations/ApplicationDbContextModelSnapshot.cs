@@ -51,6 +51,9 @@ namespace DSDMLearning.API.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Sobre")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)

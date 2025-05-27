@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSDMLearning.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250524213257_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250527215631_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,6 +53,9 @@ namespace DSDMLearning.API.Migrations
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("Sobre")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Username")
                         .IsRequired()
