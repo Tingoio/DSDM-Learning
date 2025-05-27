@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificado - DSDM</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../DSDM-Learning/src/scripts/auth.js"></script>
+
+  <link rel="stylesheet" href="src/styles/styles.css" />
+  <style>
+    .imagem-centro {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .callout a {
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="logo-title">DSDM Learning</h1>
+    <button class="menu-btn">
+      <div class="menu-icon"></div>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="aprendizagem.html">Aprendizagem</a>
+      <a href="faq.html">FAQ</a>
+      <!--<a href="login.html">Login</a>-->
+    </nav>
+  </header>
+
+  <main class="sobre">
+
+    <a href="javascript:void(0);" onclick="startAprendizagem()" class="back-arrow-link"
+      title="Voltar para Aprendizagem">
+      <span class="back-arrow">&#10140;</span>
+    </a>
+    <section class="container fade-in">
+      <div style="text-align: center">
+        <h2>Certificado</h2>
+      </div>
+
+      <div class="info-box mb-3" style="background-color: #4fd1c5;">
+        <span class="info-box-icon"><i class="far fa-comment"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Para gerar seu certificado, você deve concluir todos os módulos</span>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <a href="sobre.html">
+          <h5 class="text-black m-1"><i class="fas fa-info-circle"></i>&nbsp;Sobre&nbsp;<i style="margin-left: 660px"
+              class="fa-solid fa-thumbs-up text-success"></i></h5>
+        </a>
+      </div>
+      <div class="callout callout-danger">
+        <a href="estudoDeCaso.html">
+          <h5 class="text-black m-1"><i class="fa-solid fa-book-bookmark"></i>&nbsp;Estudo de caso&nbsp;<i
+              style="margin-left: 570px;" class="fa-solid fa-thumbs-down text-danger"></i></h5>
+        </a>
+      </div>
+      <div class="callout callout-success">
+        <h5 class="text-black m-1"><i class="fas fa-file-alt"></i>&nbsp;Materiais Educativos&nbsp;<i
+            style="margin-left: 520px;" class="fa-solid fa-thumbs-up text-success"></i></h5>
+      </div>
+      <div class="callout callout-danger">
+        <h5 class="text-black m-1"><i class="fas fa-question-circle"></i>&nbsp;Quizzes&nbsp;<i
+            style="margin-left: 635px;" class="fa-solid fa-thumbs-down text-danger"></i></h5>
+      </div>
+      <div class="callout callout-success">
+        <h5 class="text-black m-1"><i class="fas fa-clipboard-question"></i>&nbsp;FAQ&nbsp;<i
+            style="margin-left: 677px;" class="fa-solid fa-thumbs-up text-success"></i></h5>
+      </div>
+
+      <div class="text-center my-5">
+        <p>Digite seu Nome</p>
+        <input id="nomeUsuario" type="text" class="form-control w-50 mx-auto mb-3" placeholder="">
+        <button id="btnGerarCertificado" class="btn btn-success">
+          <i class="fa-solid fa-file-lines"></i>&nbsp;Gerar Certificado
+        </button>
+      </div>
+
+  </main>
+
+  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+
+  <script src="src/scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    document.getElementById('btnGerarCertificado').addEventListener('click', function () {
+      const nome = document.getElementById('nomeUsuario').value.trim();
+
+      if (nome === "") {
+        alert("Por favor, digite seu nome antes de gerar o certificado.");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const dataAtual = new Date().toLocaleDateString('pt-BR');
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Certificado de Acesso", 105, 30, null, null, "center");
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(14);
+      doc.text(`Certificamos que ${nome}`, 20, 50);
+      doc.text(`acessou o site DSDM Learning em ${dataAtual}.`, 20, 60);
+      doc.text("Este certificado foi gerado automaticamente.", 20, 80);
+
+      doc.save(`certificado_${nome.replaceAll(' ', '_').toLowerCase()}.pdf`);
+    });
+  </script>
+
+
+</body>
+
+</html>

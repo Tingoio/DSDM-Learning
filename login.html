@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="icon" type="image/png" href="src/images/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - DSDM Learning</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <style>
+      .auth-container {
+        max-width: 450px;
+        width: 100%;
+        background-color: #1e1f26;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        padding: 40px;
+        text-align: center;
+      }
+
+      .auth-title {
+        color: #4fd1c5;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+      }
+
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #2c2f38;
+      }
+
+      .auth-tab {
+        flex: 1;
+        padding: 15px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #cbd5e1;
+        transition: all 0.3s ease;
+      }
+
+      .auth-tab.active {
+        color: #4fd1c5;
+        border-bottom: 2px solid #4fd1c5;
+      }
+
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #cbd5e1;
+        font-weight: 600;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2c2f38;
+        color: #ffffff;
+        font-size: 1rem;
+      }
+
+      .form-group input:focus {
+        outline: 2px solid #4fd1c5;
+      }
+
+      .auth-button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4fd1c5;
+        color: #1a1b20;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+
+      .auth-button:hover {
+        background-color: #38b2ac;
+      }
+
+      .auth-button.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .error-message {
+        color: #e53e3e;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        text-align: left;
+        display: none;
+      }
+
+      .success-message {
+        color: #48bb78;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        text-align: left;
+        display: none;
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1 id="logo-title">DSDM Learning</h1>
+      <button class="menu-btn">
+        <div class="menu-icon"></div>
+      </button>
+      <nav class="nav-menu">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="aprendizagem.html">Aprendizagem</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div id="user-info" style="display: none"></div>
+    </header>
+
+    <main class="sobre">
+      <section class="auth-container fade-in">
+        <h2 class="auth-title">Acesso</h2>
+
+        <div class="auth-tabs">
+          <div class="auth-tab active" id="login-tab">Login</div>
+          <div class="auth-tab" id="register-tab">Cadastro</div>
+        </div>
+
+        <div class="auth-form active" id="login-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="Seu email" />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Senha</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Sua senha"
+            />
+          </div>
+          <button class="auth-button" id="login-button">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </button>
+          <div class="error-message" id="login-error"></div>
+          <div class="success-message" id="login-success"></div>
+        </div>
+
+        <div class="auth-form" id="register-form">
+          <div class="form-group">
+            <label for="register-username">Nome de Usuário</label>
+            <input
+              type="text"
+              id="register-username"
+              placeholder="Escolha um nome de usuário"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input type="email" id="register-email" placeholder="Seu email" />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Senha</label>
+            <input
+              type="password"
+              id="register-password"
+              placeholder="Crie uma senha"
+            />
+          </div>
+          <div class="form-group">
+            <label for="register-firstname">Nome</label>
+            <input type="text" id="register-firstname" placeholder="Seu nome" />
+          </div>
+          <div class="form-group">
+            <label for="register-lastname">Sobrenome</label>
+            <input
+              type="text"
+              id="register-lastname"
+              placeholder="Seu sobrenome"
+            />
+          </div>
+          <button class="auth-button" id="register-button">
+            <i class="fas fa-user-plus"></i> Cadastrar
+          </button>
+          <div class="error-message" id="register-error"></div>
+          <div class="success-message" id="register-success"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="src/scripts/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        // API URL - Ajuste para o endereço da sua API
+        const API_URL = "http://localhost:5008/api";
+
+        // Alternar entre abas
+        $("#login-tab").click(function () {
+          $(this).addClass("active");
+          $("#register-tab").removeClass("active");
+          $("#login-form").addClass("active");
+          $("#register-form").removeClass("active");
+          clearMessages();
+        });
+
+        $("#register-tab").click(function () {
+          $(this).addClass("active");
+          $("#login-tab").removeClass("active");
+          $("#register-form").addClass("active");
+          $("#login-form").removeClass("active");
+          clearMessages();
+        });
+
+        // Verificar sessão ao carregar a página
+        checkSession();
+
+        // Função de login
+        $("#login-button").click(function () {
+          const email = $("#login-email").val();
+          const password = $("#login-password").val();
+
+          clearMessages();
+
+          if (!email || !password) {
+            showError(
+              $("#login-error"),
+              "Por favor, preencha todos os campos."
+            );
+            return;
+          }
+
+          // Mostrar estado de carregamento
+          const $button = $(this);
+          $button
+            .addClass("loading")
+            .html('<div class="spinner"></div> Entrando...');
+
+          $.ajax({
+            url: `${API_URL}/Auth/login`,
+            type: "POST",
+            contentType: "application/json",
+            xhrFields: {
+              withCredentials: true,
+            },
+            data: JSON.stringify({ email, password }),
+            success: function (response) {
+              if (response.success) {
+                showSuccess(
+                  $("#login-success"),
+                  "Login realizado com sucesso! Redirecionando..."
+                );
+
+                // Armazenar informações do usuário no localStorage como backup
+                localStorage.setItem("userInfo", JSON.stringify(response.user));
+
+                // Redirecionar após 1 segundo
+                setTimeout(function () {
+                  window.location.href = "aprendizagem.html";
+                }, 1000);
+              } else {
+                showError(
+                  $("#login-error"),
+                  response.message || "Erro ao fazer login."
+                );
+              }
+            },
+            error: function (xhr) {
+              let errorMessage = "Erro ao conectar com o servidor.";
+              if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = xhr.responseJSON.message;
+              }
+              showError($("#login-error"), errorMessage);
+            },
+            complete: function () {
+              // Restaurar botão
+              $button
+                .removeClass("loading")
+                .html('<i class="fas fa-sign-in-alt"></i> Entrar');
+            },
+          });
+        });
+
+        // Função de cadastro
+        $("#register-button").click(function () {
+          const username = $("#register-username").val();
+          const email = $("#register-email").val();
+          const password = $("#register-password").val();
+          const firstName = $("#register-firstname").val();
+          const lastName = $("#register-lastname").val();
+
+          clearMessages();
+
+          if (!username || !email || !password) {
+            showError(
+              $("#register-error"),
+              "Por favor, preencha todos os campos obrigatórios."
+            );
+            return;
+          }
+
+          // Mostrar estado de carregamento
+          const $button = $(this);
+          $button
+            .addClass("loading")
+            .html('<div class="spinner"></div> Cadastrando...');
+
+          $.ajax({
+            url: `${API_URL}/Auth/register`,
+            type: "POST",
+            contentType: "application/json",
+            xhrFields: {
+              withCredentials: true,
+            },
+            data: JSON.stringify({
+              username,
+              email,
+              password,
+              firstName,
+              lastName,
+            }),
+            success: function (response) {
+              if (response.success) {
+                showSuccess(
+                  $("#register-success"),
+                  "Cadastro realizado com sucesso! Você já pode fazer login."
+                );
+
+                // Limpar campos do formulário
+                $("#register-username").val("");
+                $("#register-email").val("");
+                $("#register-password").val("");
+                $("#register-firstname").val("");
+                $("#register-lastname").val("");
+
+                // Mudar para a aba de login após 2 segundos
+                setTimeout(function () {
+                  $("#login-tab").click();
+                }, 2000);
+              } else {
+                showError(
+                  $("#register-error"),
+                  response.message || "Erro ao cadastrar."
+                );
+              }
+            },
+            error: function (xhr) {
+              let errorMessage = "Erro ao conectar com o servidor.";
+              if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = xhr.responseJSON.message;
+              }
+              showError($("#register-error"), errorMessage);
+            },
+            complete: function () {
+              // Restaurar botão
+              $button
+                .removeClass("loading")
+                .html('<i class="fas fa-user-plus"></i> Cadastrar');
+            },
+          });
+        });
+
+        // Funções auxiliares
+        function showError($element, message) {
+          $element.text(message).show();
+        }
+
+        function showSuccess($element, message) {
+          $element.text(message).show();
+        }
+
+        function clearMessages() {
+          $(".error-message, .success-message").hide();
+        }
+
+        function checkSession() {
+          $.ajax({
+            url: `${API_URL}/Auth/check-session`,
+            type: "GET",
+            xhrFields: {
+              withCredentials: true,
+            },
+            success: function (response) {
+              if (response.success) {
+                // Se já estiver logado, redirecionar para a página de aprendizagem
+                window.location.href = "aprendizagem.html";
+              }
+            },
+            error: function () {
+              // Não faz nada, apenas deixa o usuário na página de login
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
