@@ -296,7 +296,8 @@
                 );
 
                 // Armazenar informações do usuário no localStorage como backup
-                localStorage.setItem("userInfo", JSON.stringify(response.user));
+                localStorage.setItem("userInfo", JSON.stringify(response.user)); // 🟢 CORRETO
+
 
                 // Redirecionar após 1 segundo
                 setTimeout(function () {

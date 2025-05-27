@@ -72,7 +72,8 @@
       </p>
 
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn" style="background-color: #4fd1c5; color: black; font-weight: 600;">
+        <button id="btnFinalizarModulo" type="button" class="btn"
+          style="background-color: #4fd1c5; color: black; font-weight: 600;">
           <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
         </button>
       </div>
@@ -86,3 +87,42 @@
 </body>
 
 </html>
+
+<script>
+  document.getElementById("btnFinalizarModulo").addEventListener("click", function () {
+    const userRaw = localStorage.getItem("userInfo"); 
+    if (!userRaw) {
+      alert("Objeto 'userInfo' não encontrado no localStorage.");
+      return;
+    }
+
+    const user = JSON.parse(userRaw);
+    const userId = user.id;
+
+    if (!userId) {
+      alert("ID do usuário não está presente no objeto.");
+      return;
+    }
+
+    fetch("http://localhost:5008/api/user/atualizar-sobre", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userId)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Módulo finalizado com sucesso!");
+        } else {
+          alert("Erro: " + data.message);
+        }
+      })
+      .catch(err => {
+        console.error("Erro na requisição:", err);
+        alert("Erro ao se comunicar com o servidor.");
+      });
+  });
+
+</script>
