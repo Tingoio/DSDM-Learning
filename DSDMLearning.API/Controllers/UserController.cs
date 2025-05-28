@@ -52,11 +52,15 @@ namespace DSDMLearning.API.Controllers
         }
 
         [HttpPut("atualizar-sobre")]
-        // [AllowAnonymous] // <- Permite acesso mesmo sem sessão/autenticação
-        public async Task<IActionResult> AtualizarSobre([FromBody] int userId)
+        public async Task<IActionResult> AtualizarSobre()
         {
-            var user = await _authService.GetUserByIdAsync(userId);
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
 
+            var user = await _authService.GetUserByIdAsync(userId.Value);
             if (user == null)
             {
                 return NotFound(new { Success = false, Message = "Usuário não encontrado." });
