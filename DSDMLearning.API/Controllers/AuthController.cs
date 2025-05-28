@@ -88,6 +88,9 @@ namespace DSDMLearning.API.Controllers
             var userInfoJson = HttpContext.Session.GetString("UserInfo");
             var userInfo = JsonSerializer.Deserialize<UserInfo>(userInfoJson);
 
+            Console.WriteLine("Sessão retornada no check-session: " + userInfoJson);
+
+
             return Ok(new { Success = true, User = userInfo });
         }
     }
