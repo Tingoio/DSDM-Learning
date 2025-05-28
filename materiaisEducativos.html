@@ -69,15 +69,11 @@
         baseados nas prioridades MoSCoW.
       </p>
       <div class="d-flex justify-content-center">
-          <button
-            id="btnFinalizarModulo"
-            type="button"
-            class="btn"
-            style="background-color: #4fd1c5; color: black; font-weight: 600"
-          >
-            <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
-          </button>
-        </div>
+        <button id="btnFinalizarModulo" type="button" class="btn"
+          style="background-color: #4fd1c5; color: black; font-weight: 600">
+          <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
+        </button>
+      </div>
     </section>
 
   </main>
@@ -91,6 +87,7 @@
 
 </html>
 <script>
+  // Ao clicar em "Finalizar Módulo"
   document
     .getElementById("btnFinalizarModulo")
     .addEventListener("click", function () {
@@ -119,14 +116,37 @@
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            alert("Módulo finalizado com sucesso!");
-          } else {
-            alert("Erro: " + data.message);
+            // Atualiza apenas o campo 'faq' localmente
+            user.materiaisEducativos = true;
+            localStorage.setItem("userInfo", JSON.stringify(user));
+
+            // Substitui o botão por texto "Módulo Concluído"
+            $("#btnFinalizarModulo")
+              .closest("div.d-flex")
+              .html(
+                '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+              );
           }
+
         })
         .catch((err) => {
           console.error("Erro na requisição:", err);
           alert("Erro ao se comunicar com o servidor.");
         });
     });
+
+  // Ao carregar a página, esconde o botão se já estiver finalizado
+  $(document).ready(function () {
+    const userRaw = localStorage.getItem("userInfo");
+    if (userRaw) {
+      const user = JSON.parse(userRaw);
+      if (user.materiaisEducativos === true) {
+        $("#btnFinalizarModulo")
+          .closest("div.d-flex")
+          .html(
+            '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+          );
+      }
+    }
+  });
 </script>

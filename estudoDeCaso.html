@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-  <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
+  <link rel="icon" type="image/png" href="src/images/favicon.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estudo de Caso - DSDM</title>
@@ -35,7 +35,6 @@
       <a href="sobre.html">Sobre</a>
       <a href="aprendizagem.html">Aprendizagem</a>
       <a href="faq.html">FAQ</a>
-      <a href="certificado.html">Certificado</a>
       <!--<a href="login.html">Login</a>-->
     </nav>
     <div id="user-info" style="display: none"></div>
@@ -180,15 +179,11 @@
       </p>
 
       <div class="d-flex justify-content-center">
-          <button
-            id="btnFinalizarModulo"
-            type="button"
-            class="btn"
-            style="background-color: #4fd1c5; color: black; font-weight: 600"
-          >
-            <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
-          </button>
-        </div>
+        <button id="btnFinalizarModulo" type="button" class="btn"
+          style="background-color: #4fd1c5; color: black; font-weight: 600;">
+          <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
+        </button>
+      </div>
     </section>
   </main>
 
@@ -200,44 +195,66 @@
 </body>
 
 </html>
-
 <script>
-  document
-    .getElementById("btnFinalizarModulo")
-    .addEventListener("click", function () {
-      const userRaw = localStorage.getItem("userInfo");
-      if (!userRaw) {
-        alert("Objeto 'userInfo' não encontrado no localStorage.");
-        return;
-      }
+  // Ação ao clicar no botão "Finalizar Módulo"
+  document.getElementById("btnFinalizarModulo").addEventListener("click", function () {
+    const userRaw = localStorage.getItem("userInfo");
 
-      const user = JSON.parse(userRaw);
-      const userId = user.id;
+    if (!userRaw) {
+      alert("Objeto 'userInfo' não encontrado no localStorage.");
+      return;
+    }
 
-      if (!userId) {
-        alert("ID do usuário não está presente no objeto.");
-        return;
-      }
+    const user = JSON.parse(userRaw);
+    const userId = user.id;
 
-      fetch("http://localhost:5008/api/user/atualizar-estudoCaso", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({}),
+    if (!userId) {
+      alert("ID do usuário não está presente no objeto.");
+      return;
+    }
+
+    fetch("http://localhost:5008/api/user/atualizar-estudoCaso", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          // Atualiza apenas o campo 'faq' localmente
+          user.estudoCaso = true;
+          localStorage.setItem("userInfo", JSON.stringify(user));
+
+          // Substitui o botão por texto "Módulo Concluído"
+          $("#btnFinalizarModulo")
+            .closest("div.d-flex")
+            .html(
+              '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+            );
+        }
+
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Módulo finalizado com sucesso!");
-          } else {
-            alert("Erro: " + data.message);
-          }
-        })
-        .catch((err) => {
-          console.error("Erro na requisição:", err);
-          alert("Erro ao se comunicar com o servidor.");
-        });
-    });
+      .catch((err) => {
+        console.error("Erro na requisição:", err);
+        alert("Erro ao se comunicar com o servidor.");
+      });
+  });
+
+  // Verificação automática no carregamento da página
+  $(document).ready(function () {
+    const userRaw = localStorage.getItem("userInfo");
+    if (userRaw) {
+      const user = JSON.parse(userRaw);
+      if (user.estudoCaso === true) {
+        $("#btnFinalizarModulo")
+          .closest("div.d-flex")
+          .html(
+            '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+          );
+      }
+    }
+  });
 </script>
