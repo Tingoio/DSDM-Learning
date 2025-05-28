@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSDM Learning</title>
@@ -68,10 +68,15 @@
         baseados nas prioridades MoSCoW.
       </p>
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn" style="background-color: #4fd1c5; color: black; font-weight: 600;">
-          <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
-        </button>
-      </div>
+          <button
+            id="btnFinalizarModulo"
+            type="button"
+            class="btn"
+            style="background-color: #4fd1c5; color: black; font-weight: 600"
+          >
+            <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
+          </button>
+        </div>
     </section>
 
   </main>
@@ -84,3 +89,43 @@
 </body>
 
 </html>
+<script>
+  document
+    .getElementById("btnFinalizarModulo")
+    .addEventListener("click", function () {
+      const userRaw = localStorage.getItem("userInfo");
+      if (!userRaw) {
+        alert("Objeto 'userInfo' não encontrado no localStorage.");
+        return;
+      }
+
+      const user = JSON.parse(userRaw);
+      const userId = user.id;
+
+      if (!userId) {
+        alert("ID do usuário não está presente no objeto.");
+        return;
+      }
+
+      fetch("http://localhost:5008/api/user/atualizar-materiaisEducativos", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({}),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Módulo finalizado com sucesso!");
+          } else {
+            alert("Erro: " + data.message);
+          }
+        })
+        .catch((err) => {
+          console.error("Erro na requisição:", err);
+          alert("Erro ao se comunicar com o servidor.");
+        });
+    });
+</script>

@@ -16,5 +16,10 @@ namespace DSDMLearning.API.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool Sobre { get; set; }
+        public bool EstudoCaso { get; set;}
+        public bool MateriaisEducativos { get; set;}
+        public bool Quizzes { get; set;}
+        public bool Faq { get; set;}
+        public bool Certificado { get; set;}
     }
 }

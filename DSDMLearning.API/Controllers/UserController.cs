@@ -78,7 +78,197 @@ namespace DSDMLearning.API.Controllers
                     user.Id,
                     user.Username,
                     user.Email,
-                    user.Sobre
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
+                }
+            });
+        }
+
+        [HttpPut("atualizar-estudoCaso")]
+        public async Task<IActionResult> AtualizarEstudoCaso()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
+
+            var user = await _authService.GetUserByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.EstudoCaso = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'Estudo de Caso' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
+                }
+            });
+        }
+
+        [HttpPut("atualizar-materiaisEducativos")]
+        public async Task<IActionResult> AtualizarMateriaisEducativos()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
+
+            var user = await _authService.GetUserByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.MateriaisEducativos = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'Materiais Educativos' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
+                }
+            });
+        }
+
+        [HttpPut("atualizar-quizzes")]
+        public async Task<IActionResult> AtualizarQuizzes()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
+
+            var user = await _authService.GetUserByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.Quizzes = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'Quizzes' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
+                }
+            });
+        }
+        
+        [HttpPut("atualizar-faq")]
+        public async Task<IActionResult> AtualizarFaq()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
+
+            var user = await _authService.GetUserByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.Faq = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'FAQ' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
+                }
+            });
+        }
+
+        [HttpPut("atualizar-certificado")]
+        public async Task<IActionResult> AtualizarCertificado()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return Unauthorized(new { Success = false, Message = "Usuário não está autenticado." });
+            }
+
+            var user = await _authService.GetUserByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return NotFound(new { Success = false, Message = "Usuário não encontrado." });
+            }
+
+            user.Certificado = true;
+            await _authService.SalvarAsync();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Campo 'Certificado' atualizado com sucesso.",
+                User = new
+                {
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.Sobre,
+                    user.EstudoCaso,
+                    user.MateriaisEducativos,
+                    user.Quizzes,
+                    user.Faq,
+                    user.Certificado,
                 }
             });
         }

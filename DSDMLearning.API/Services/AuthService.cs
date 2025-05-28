@@ -63,12 +63,19 @@ namespace DSDMLearning.API.Services
                 Message = "Registro realizado com sucesso!",
                 User = new UserInfo
                 {
+
                     Id = user.Id,
                     Username = user.Username,
                     Email = user.Email,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Sobre = user.Sobre
+                    Sobre = user.Sobre,
+                    EstudoCaso = user.EstudoCaso,
+                    MateriaisEducativos = user.MateriaisEducativos,
+                    Quizzes = user.Quizzes,
+                    Faq = user.Faq,
+                    Certificado = user.Certificado,
+
                 }
             };
         }
@@ -111,7 +118,12 @@ namespace DSDMLearning.API.Services
                     Email = user.Email,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Sobre = user.Sobre
+                    Sobre = user.Sobre,
+                    EstudoCaso = user.EstudoCaso,
+                    MateriaisEducativos = user.MateriaisEducativos,
+                    Quizzes = user.Quizzes,
+                    Faq = user.Faq,
+                    Certificado = user.Certificado,
                 }
             };
         }

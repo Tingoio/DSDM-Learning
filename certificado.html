@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-  <link rel="icon" type="image/png" href="src/images/favicon.png" />
+  <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificado - DSDM</title>
@@ -42,6 +42,9 @@
   </header>
 
   <main class="sobre">
+
+    <img id="logo" src="src/images/dsdmPNG.png" style="display: none;" />
+
 
     <a href="javascript:void(0);" onclick="startAprendizagem()" class="back-arrow-link"
       title="Voltar para Aprendizagem">
@@ -105,29 +108,67 @@
   <script>
     document.getElementById('btnGerarCertificado').addEventListener('click', function () {
       const nome = document.getElementById('nomeUsuario').value.trim();
-
       if (nome === "") {
         alert("Por favor, digite seu nome antes de gerar o certificado.");
         return;
       }
 
+      const logo = document.getElementById('logo');
+
+      // Converter logo para Base64
+      const canvasLogo = document.createElement('canvas');
+      const ctxLogo = canvasLogo.getContext('2d');
+      canvasLogo.width = logo.naturalWidth;
+      canvasLogo.height = logo.naturalHeight;
+      ctxLogo.drawImage(logo, 0, 0);
+      const imagemLogoBase64 = canvasLogo.toDataURL("image/png");
+
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+      const doc = new jsPDF("p", "mm", "a4");
       const dataAtual = new Date().toLocaleDateString('pt-BR');
+      const nomeCapitalizado = nome[0].toUpperCase() + nome.slice(1);
 
+      // Logo pequeno no canto superior esquerdo (não sobrepõe o título)
+      doc.addImage(imagemLogoBase64, 'PNG', 15, 10, 25, 25); // x, y, width, height
+
+      // Título centralizado
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(18);
-      doc.text("Certificado de Acesso", 105, 30, null, null, "center");
+      doc.setFontSize(24);
+      doc.text("CERTIFICADO DE CONCLUSÃO", 105, 40, null, null, "center");
 
+      // Texto principal
       doc.setFont("helvetica", "normal");
       doc.setFontSize(14);
-      doc.text(`Certificamos que ${nome}`, 20, 50);
-      doc.text(`acessou o site DSDM Learning em ${dataAtual}.`, 20, 60);
-      doc.text("Este certificado foi gerado automaticamente.", 20, 80);
 
+      const texto = [
+        `Certificamos que ${nomeCapitalizado},`,
+        "concluiu com êxito as atividades da plataforma DSDM Learning,",
+        "demonstrando dedicação e interesse no desenvolvimento contínuo.",
+        "",
+
+        "Resconhecemos o empenho e o comprometimento com o aprendizado,",
+        "valores fundamentais no crescimento profissional e pessoal.",
+        "",
+        "A equipe DSDM Learning agradece sua participação!",
+        `Certificado gerado no dia ${dataAtual}.`,
+      ];
+
+      let y = 60;
+      texto.forEach((linha) => {
+        doc.text(linha, 20, y);
+        y += 10;
+      });
+
+      // Rodapé - Equipe
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(12);
+      doc.text("Equipe DSDM Learning", 155, y + 20, null, null, "center");
+
+      // Salvar PDF
       doc.save(`certificado_${nome.replaceAll(' ', '_').toLowerCase()}.pdf`);
     });
   </script>
+
 
 
 </body>
