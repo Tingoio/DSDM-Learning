@@ -32,7 +32,13 @@ namespace DSDMLearning.API.Migrations
                     LastName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    LastLogin = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    LastLogin = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    Sobre = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    EstudoCaso = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    MateriaisEducativos = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Quizzes = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Faq = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Certificado = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {

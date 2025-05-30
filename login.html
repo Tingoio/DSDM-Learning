@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <link rel="icon" type="image/png" href="src/images/favicon.png" />
+    <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - DSDM Learning</title>
@@ -146,15 +146,15 @@
   <body>
     <header>
       <h1 id="logo-title">DSDM Learning</h1>
-      <button class="menu-btn">
+      <!-- <button class="menu-btn">
         <div class="menu-icon"></div>
-      </button>
-      <nav class="nav-menu">
+      </button> -->
+      <!-- <nav class="nav-menu">
         <a href="index.html">Início</a>
         <a href="sobre.html">Sobre</a>
         <a href="aprendizagem.html">Aprendizagem</a>
         <a href="faq.html">FAQ</a>
-      </nav>
+      </nav> -->
       <div id="user-info" style="display: none"></div>
     </header>
 
@@ -296,11 +296,12 @@
                 );
 
                 // Armazenar informações do usuário no localStorage como backup
-                localStorage.setItem("userInfo", JSON.stringify(response.user));
+                localStorage.setItem("userInfo", JSON.stringify(response.user)); // 🟢 CORRETO
+
 
                 // Redirecionar após 1 segundo
                 setTimeout(function () {
-                  window.location.href = "aprendizagem.html";
+                  window.location.href = "index.html";
                 }, 1000);
               } else {
                 showError(
@@ -417,24 +418,24 @@
           $(".error-message, .success-message").hide();
         }
 
-        function checkSession() {
-          $.ajax({
-            url: `${API_URL}/Auth/check-session`,
-            type: "GET",
-            xhrFields: {
-              withCredentials: true,
-            },
-            success: function (response) {
-              if (response.success) {
-                // Se já estiver logado, redirecionar para a página de aprendizagem
-                window.location.href = "aprendizagem.html";
-              }
-            },
-            error: function () {
-              // Não faz nada, apenas deixa o usuário na página de login
-            },
-          });
-        }
+          function checkSession() {
+            $.ajax({
+              url: `${API_URL}/Auth/check-session`,
+              type: "GET",
+              xhrFields: {
+                withCredentials: true,
+              },
+              success: function (response) {
+                if (response.success) {
+                  // Se já estiver logado, redirecionar para a página de aprendizagem
+                  window.location.href = "aprendizagem.html";
+                }
+              },
+              error: function () {
+                // Não faz nada, apenas deixa o usuário na página de login
+              },
+            });
+          }
       });
     </script>
   </body>

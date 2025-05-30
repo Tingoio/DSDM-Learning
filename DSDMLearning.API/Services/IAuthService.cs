@@ -9,5 +9,7 @@ namespace DSDMLearning.API.Services
         Task<AuthResponse> RegisterAsync(RegisterRequest model);
         Task<AuthResponse> LoginAsync(LoginRequest model);
         Task<User> GetUserByIdAsync(int userId);
+        Task SalvarAsync();
+
     }
 }

@@ -179,7 +179,8 @@
       </p>
 
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn" style="background-color: #4fd1c5; color: black; font-weight: 600;">
+        <button id="btnFinalizarModulo" type="button" class="btn"
+          style="background-color: #4fd1c5; color: black; font-weight: 600;">
           <i class="fa-solid fa-check"></i>&nbsp;Finalizar Módulo
         </button>
       </div>
@@ -194,3 +195,66 @@
 </body>
 
 </html>
+<script>
+  // Ação ao clicar no botão "Finalizar Módulo"
+  document.getElementById("btnFinalizarModulo").addEventListener("click", function () {
+    const userRaw = localStorage.getItem("userInfo");
+
+    if (!userRaw) {
+      alert("Objeto 'userInfo' não encontrado no localStorage.");
+      return;
+    }
+
+    const user = JSON.parse(userRaw);
+    const userId = user.id;
+
+    if (!userId) {
+      alert("ID do usuário não está presente no objeto.");
+      return;
+    }
+
+    fetch("http://localhost:5008/api/user/atualizar-estudoCaso", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          // Atualiza apenas o campo 'faq' localmente
+          user.estudoCaso = true;
+          localStorage.setItem("userInfo", JSON.stringify(user));
+
+          // Substitui o botão por texto "Módulo Concluído"
+          $("#btnFinalizarModulo")
+            .closest("div.d-flex")
+            .html(
+              '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+            );
+        }
+
+      })
+      .catch((err) => {
+        console.error("Erro na requisição:", err);
+        alert("Erro ao se comunicar com o servidor.");
+      });
+  });
+
+  // Verificação automática no carregamento da página
+  $(document).ready(function () {
+    const userRaw = localStorage.getItem("userInfo");
+    if (userRaw) {
+      const user = JSON.parse(userRaw);
+      if (user.estudoCaso === true) {
+        $("#btnFinalizarModulo")
+          .closest("div.d-flex")
+          .html(
+            '<div class="text-center text-success fw-bold fs-5">Módulo Concluído <i class="fa-solid fa-circle-check"></i></div>'
+          );
+      }
+    }
+  });
+</script>

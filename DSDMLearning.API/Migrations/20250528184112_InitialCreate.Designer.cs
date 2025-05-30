@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSDMLearning.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250524213257_InitialCreate")]
+    [Migration("20250528184112_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,6 +33,9 @@ namespace DSDMLearning.API.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Certificado")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -40,6 +43,12 @@ namespace DSDMLearning.API.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<bool>("EstudoCaso")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("Faq")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
@@ -50,9 +59,18 @@ namespace DSDMLearning.API.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("MateriaisEducativos")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("Quizzes")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("Sobre")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Username")
                         .IsRequired()
