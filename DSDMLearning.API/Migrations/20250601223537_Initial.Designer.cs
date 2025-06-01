@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSDMLearning.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250528184112_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250601223537_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
