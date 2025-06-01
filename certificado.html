@@ -1,205 +1,277 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificado - DSDM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles/styles.css" />
+    <style>
+      .imagem-centro {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
 
-<head>
-  <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificado - DSDM</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="../DSDM-Learning/src/scripts/auth.js"></script>
-  <link rel="stylesheet" href="src/styles/styles.css" />
-  <style>
-    .imagem-centro {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
+      .callout a {
+        text-decoration: none;
+        color: blue;
+      }
 
-    .callout a {
-      text-decoration: none;
-      color: blue;
-    }
+      #btnGerarCertificado {
+        display: none;
+      }
+    </style>
+  </head>
 
-    #btnGerarCertificado {
-      display: none;
-    }
-  </style>
-</head>
+  <body>
+    <header>
+      <h1 id="logo-title">DSDM Learning</h1>
+      <button class="menu-btn">
+        <div class="menu-icon"></div>
+      </button>
+      <div id="user-info" style="display: none"></div>
+      <nav class="nav-menu">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="aprendizagem.html">Aprendizagem</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <h1 id="logo-title">DSDM Learning</h1>
-    <button class="menu-btn">
-      <div class="menu-icon"></div>
-    </button>
-    <nav class="nav-menu">
-      <a href="index.html">Início</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="aprendizagem.html">Aprendizagem</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-  </header>
+    <main class="sobre">
+      <img id="logo" src="src/images/dsdmPNG.png" style="display: none" />
+      <a
+        href="javascript:void(0);"
+        onclick="startAprendizagem()"
+        class="back-arrow-link"
+        title="Voltar para Aprendizagem"
+      >
+        <span class="back-arrow">&#10140;</span>
+      </a>
 
-  <main class="sobre">
-    <img id="logo" src="src/images/dsdmPNG.png" style="display: none;" />
-    <a href="javascript:void(0);" onclick="startAprendizagem()" class="back-arrow-link" title="Voltar para Aprendizagem">
-      <span class="back-arrow">&#10140;</span>
-    </a>
-
-    <section class="container fade-in">
-      <div style="text-align: center">
-        <h2>Certificado</h2>
-      </div>
-
-      <div class="info-box mb-3" style="background-color: #4fd1c5;">
-        <span class="info-box-icon"><i class="far fa-comment"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Para gerar seu certificado, você deve concluir todos os módulos</span>
+      <section class="container fade-in">
+        <div style="text-align: center">
+          <h2>Certificado</h2>
         </div>
-      </div>
 
-      <div class="callout"><a href="sobre.html"><h5 class="text-black m-1 d-flex justify-content-between align-items-center"><span><i class="fas fa-info-circle"></i>&nbsp;Sobre</span><i id="iconeSobre" class="fa-solid"></i></h5></a></div>
-      <div class="callout"><a href="estudoDeCaso.html"><h5 class="text-black m-1 d-flex justify-content-between align-items-center"><span><i class="fa-solid fa-book-bookmark"></i>&nbsp;Estudo de caso</span><i id="iconeEstudo" class="fa-solid"></i></h5></a></div>
-      <div class="callout"><a href="materiaisEducativos.html"><h5 class="text-black m-1 d-flex justify-content-between align-items-center"><span><i class="fas fa-file-alt"></i>&nbsp;Materiais Educativos</span><i id="iconeMateriais" class="fa-solid"></i></h5></a></div>
-      <div class="callout"><a href="quizzes.html"><h5 class="text-black m-1 d-flex justify-content-between align-items-center"><span><i class="fas fa-question-circle"></i>&nbsp;Quizzes</span><i id="iconeQuizzes" class="fa-solid"></i></h5></a></div>
-      <div class="callout"><a href="faq.html"><h5 class="text-black m-1 d-flex justify-content-between align-items-center"><span><i class="fas fa-clipboard-question"></i>&nbsp;FAQ</span><i id="iconeFaq" class="fa-solid"></i></h5></a></div>
+        <div class="info-box mb-3" style="background-color: #4fd1c5">
+          <span class="info-box-icon"><i class="far fa-comment"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text"
+              >Para gerar seu certificado, você deve concluir todos os
+              módulos</span
+            >
+          </div>
+        </div>
 
-      <div class="text-center my-5">
-        <button id="btnGerarCertificado" class="btn btn-success">
-          <i class="fa-solid fa-file-lines"></i>&nbsp;Gerar Certificado
-        </button>
-      </div>
-    </section>
-  </main>
+        <div class="callout">
+          <a href="sobre.html"
+            ><h5
+              class="text-black m-1 d-flex justify-content-between align-items-center"
+            >
+              <span><i class="fas fa-info-circle"></i>&nbsp;Sobre</span
+              ><i id="iconeSobre" class="fa-solid"></i></h5
+          ></a>
+        </div>
+        <div class="callout">
+          <a href="estudoDeCaso.html"
+            ><h5
+              class="text-black m-1 d-flex justify-content-between align-items-center"
+            >
+              <span
+                ><i class="fa-solid fa-book-bookmark"></i>&nbsp;Estudo de
+                caso</span
+              ><i id="iconeEstudo" class="fa-solid"></i></h5
+          ></a>
+        </div>
+        <div class="callout">
+          <a href="materiaisEducativos.html"
+            ><h5
+              class="text-black m-1 d-flex justify-content-between align-items-center"
+            >
+              <span
+                ><i class="fas fa-file-alt"></i>&nbsp;Materiais Educativos</span
+              ><i id="iconeMateriais" class="fa-solid"></i></h5
+          ></a>
+        </div>
+        <div class="callout">
+          <a href="quizzes.html"
+            ><h5
+              class="text-black m-1 d-flex justify-content-between align-items-center"
+            >
+              <span><i class="fas fa-question-circle"></i>&nbsp;Quizzes</span
+              ><i id="iconeQuizzes" class="fa-solid"></i></h5
+          ></a>
+        </div>
+        <div class="callout">
+          <a href="faq.html"
+            ><h5
+              class="text-black m-1 d-flex justify-content-between align-items-center"
+            >
+              <span><i class="fas fa-clipboard-question"></i>&nbsp;FAQ</span
+              ><i id="iconeFaq" class="fa-solid"></i></h5
+          ></a>
+        </div>
 
-  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+        <div class="text-center my-5">
+          <button id="btnGerarCertificado" class="btn btn-success">
+            <i class="fa-solid fa-file-lines"></i>&nbsp;Gerar Certificado
+          </button>
+        </div>
+      </section>
+    </main>
 
-  <script src="src/scripts/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const userRaw = localStorage.getItem("userInfo");
-      if (!userRaw) return;
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="src/scripts/auth.js"></script>
+    <script src="src/scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-      const user = JSON.parse(userRaw);
-      const concluiuTodosModulos =
-        user.sobre === true &&
-        user.estudoCaso === true &&
-        user.materiaisEducativos === true &&
-        user.quizzes === true &&
-        user.faq === true;
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const userRaw = localStorage.getItem("userInfo");
+        if (!userRaw) return;
 
-      const btnCertificado = document.getElementById("btnGerarCertificado");
-      const divInfoBox = document.querySelector(".info-box");
+        const user = JSON.parse(userRaw);
+        const concluiuTodosModulos =
+          user.sobre === true &&
+          user.estudoCaso === true &&
+          user.materiaisEducativos === true &&
+          user.quizzes === true &&
+          user.faq === true;
 
-      if (concluiuTodosModulos) {
-        btnCertificado.style.display = "inline-block";
-        if (divInfoBox) divInfoBox.style.display = "none";
-      } else {
-        btnCertificado.style.display = "none";
-        if (divInfoBox) divInfoBox.style.display = "block";
-      }
+        const btnCertificado = document.getElementById("btnGerarCertificado");
+        const divInfoBox = document.querySelector(".info-box");
 
-      const icones = {
-        sobre: "iconeSobre",
-        estudoCaso: "iconeEstudo",
-        materiaisEducativos: "iconeMateriais",
-        quizzes: "iconeQuizzes",
-        faq: "iconeFaq"
-      };
-
-      for (const [chave, idIcone] of Object.entries(icones)) {
-        const icone = document.getElementById(idIcone);
-        if (!icone) continue;
-
-        if (user[chave]) {
-          icone.classList.add("fa-thumbs-up", "text-success");
-          icone.classList.remove("fa-thumbs-down", "text-danger");
+        if (concluiuTodosModulos) {
+          btnCertificado.style.display = "inline-block";
+          if (divInfoBox) divInfoBox.style.display = "none";
         } else {
-          icone.classList.add("fa-thumbs-down", "text-danger");
-          icone.classList.remove("fa-thumbs-up", "text-success");
-        }
-      }
-    });
-
-    document.getElementById('btnGerarCertificado').addEventListener('click', async function () {
-      try {
-        const perfilResponse = await fetch("http://localhost:5008/api/user/profile", {
-          method: "GET",
-          credentials: "include"
-        });
-
-        const perfilData = await perfilResponse.json();
-        if (!perfilData.success) {
-          alert(perfilData.Message || "Erro ao obter os dados do usuário.");
-          return;
+          btnCertificado.style.display = "none";
+          if (divInfoBox) divInfoBox.style.display = "block";
         }
 
-        const user = perfilData.user;
-        const nome = `${user.firstName} ${user.lastName}`;
+        const icones = {
+          sobre: "iconeSobre",
+          estudoCaso: "iconeEstudo",
+          materiaisEducativos: "iconeMateriais",
+          quizzes: "iconeQuizzes",
+          faq: "iconeFaq",
+        };
 
-        const nomeCapitalizado = nome.split(" ").map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+        for (const [chave, idIcone] of Object.entries(icones)) {
+          const icone = document.getElementById(idIcone);
+          if (!icone) continue;
 
-        const logo = document.getElementById('logo');
-        const canvasLogo = document.createElement('canvas');
-        const ctxLogo = canvasLogo.getContext('2d');
-        canvasLogo.width = logo.naturalWidth;
-        canvasLogo.height = logo.naturalHeight;
-        ctxLogo.drawImage(logo, 0, 0);
-        const imagemLogoBase64 = canvasLogo.toDataURL("image/png");
+          if (user[chave]) {
+            icone.classList.add("fa-thumbs-up", "text-success");
+            icone.classList.remove("fa-thumbs-down", "text-danger");
+          } else {
+            icone.classList.add("fa-thumbs-down", "text-danger");
+            icone.classList.remove("fa-thumbs-up", "text-success");
+          }
+        }
+      });
 
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF("p", "mm", "a4");
-        const dataAtual = new Date().toLocaleDateString('pt-BR');
+      document
+        .getElementById("btnGerarCertificado")
+        .addEventListener("click", async function () {
+          try {
+            const perfilResponse = await fetch(
+              "http://localhost:5008/api/user/profile",
+              {
+                method: "GET",
+                credentials: "include",
+              }
+            );
 
-        doc.addImage(imagemLogoBase64, 'PNG', 15, 10, 25, 25);
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(24);
-        doc.text("CERTIFICADO DE CONCLUSÃO", 105, 40, null, null, "center");
+            const perfilData = await perfilResponse.json();
+            if (!perfilData.success) {
+              alert(perfilData.Message || "Erro ao obter os dados do usuário.");
+              return;
+            }
 
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(14);
-        const texto = [
-          `Certificamos que ${nomeCapitalizado},`,
-          "concluiu com êxito as atividades da plataforma DSDM Learning,",
-          "demonstrando dedicação e interesse no desenvolvimento contínuo.",
-          "",
-          "Reconhecemos o empenho e o comprometimento com o aprendizado,",
-          "valores fundamentais no crescimento profissional e pessoal.",
-          "",
-          "A equipe DSDM Learning agradece sua participação!",
-        ];
+            const user = perfilData.user;
+            const nome = `${user.firstName} ${user.lastName}`;
 
-        let y = 60;
-        texto.forEach((linha) => {
-          doc.text(linha, 20, y);
-          y += 10;
+            const nomeCapitalizado = nome
+              .split(" ")
+              .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+              .join(" ");
+
+            const logo = document.getElementById("logo");
+            const canvasLogo = document.createElement("canvas");
+            const ctxLogo = canvasLogo.getContext("2d");
+            canvasLogo.width = logo.naturalWidth;
+            canvasLogo.height = logo.naturalHeight;
+            ctxLogo.drawImage(logo, 0, 0);
+            const imagemLogoBase64 = canvasLogo.toDataURL("image/png");
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF("p", "mm", "a4");
+            const dataAtual = new Date().toLocaleDateString("pt-BR");
+
+            doc.addImage(imagemLogoBase64, "PNG", 15, 10, 25, 25);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(24);
+            doc.text("CERTIFICADO DE CONCLUSÃO", 105, 40, null, null, "center");
+
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(14);
+            const texto = [
+              `Certificamos que ${nomeCapitalizado},`,
+              "concluiu com êxito as atividades da plataforma DSDM Learning,",
+              "demonstrando dedicação e interesse no desenvolvimento contínuo.",
+              "",
+              "Reconhecemos o empenho e o comprometimento com o aprendizado,",
+              "valores fundamentais no crescimento profissional e pessoal.",
+              "",
+              "A equipe DSDM Learning agradece sua participação!",
+            ];
+
+            let y = 60;
+            texto.forEach((linha) => {
+              doc.text(linha, 20, y);
+              y += 10;
+            });
+
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(12);
+            doc.text("Equipe DSDM Learning", 155, y + 20, null, null, "center");
+            doc.save(
+              `certificado_${nome.replaceAll(" ", "_").toLowerCase()}.pdf`
+            );
+
+            await fetch(
+              "http://localhost:5008/api/user/atualizar-certificado",
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({}),
+              }
+            );
+          } catch (error) {
+            console.error("Erro ao gerar certificado:", error);
+            alert("Erro ao gerar o certificado.");
+          }
         });
-
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(12);
-        doc.text("Equipe DSDM Learning", 155, y + 20, null, null, "center");
-        doc.save(`certificado_${nome.replaceAll(' ', '_').toLowerCase()}.pdf`);
-
-        await fetch("http://localhost:5008/api/user/atualizar-certificado", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({})
-        });
-
-      } catch (error) {
-        console.error("Erro ao gerar certificado:", error);
-        alert("Erro ao gerar o certificado.");
-      }
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

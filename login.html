@@ -298,6 +298,7 @@
                 // Armazenar informações do usuário no localStorage como backup
                 localStorage.setItem("userInfo", JSON.stringify(response.user)); // 🟢 CORRETO
 
+                localStorage.setItem("openModal", "true");
 
                 // Redirecionar após 1 segundo
                 setTimeout(function () {
@@ -418,24 +419,24 @@
           $(".error-message, .success-message").hide();
         }
 
-          function checkSession() {
-            $.ajax({
-              url: `${API_URL}/Auth/check-session`,
-              type: "GET",
-              xhrFields: {
-                withCredentials: true,
-              },
-              success: function (response) {
-                if (response.success) {
-                  // Se já estiver logado, redirecionar para a página de aprendizagem
-                  window.location.href = "aprendizagem.html";
-                }
-              },
-              error: function () {
-                // Não faz nada, apenas deixa o usuário na página de login
-              },
-            });
-          }
+        function checkSession() {
+          $.ajax({
+            url: `${API_URL}/Auth/check-session`,
+            type: "GET",
+            xhrFields: {
+              withCredentials: true,
+            },
+            success: function (response) {
+              if (response.success) {
+                // Se já estiver logado, redirecionar para a página de aprendizagem
+                window.location.href = "aprendizagem.html";
+              }
+            },
+            error: function () {
+              // Não faz nada, apenas deixa o usuário na página de login
+            },
+          });
+        }
       });
     </script>
   </body>

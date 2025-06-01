@@ -1,176 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSDM Learning</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/styles/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<head>
-  <link rel="icon" type="image/png" href="src/images/dsdmPNG.png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DSDM Learning</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="src/styles/styles.css" />
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+      #trilha-btn {
+        position: fixed;
+        left: 20px;
+        top: 100px;
+        background-color: #4ade80;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 999;
+        font-weight: bold;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      }
 
-    #trilha-btn {
-      position: fixed;
-      left: 20px;
-      top: 100px;
-      background-color: #4ade80;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 999;
-      font-weight: bold;
-      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    }
+      #trilha-btn:hover {
+        background-color: #22c55e;
+      }
 
-    #trilha-btn:hover {
-      background-color: #22c55e;
-    }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+      .modal-content {
+        background-color: #1e1f26;
+        margin: 10% auto;
+        padding: 30px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      }
 
-    .modal-content {
-      background-color: #1e1f26;
-      margin: 10% auto;
-      padding: 30px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-      color: #ffffff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-    }
+      .modal-content h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #4fd1c5;
+      }
 
-    .modal-content h2 {
-      margin-bottom: 20px;
-      text-align: center;
-      color: #4fd1c5;
-    }
+      .jornada-lista {
+        list-style: none;
+        padding: 0;
+        font-size: 18px;
+      }
 
-    .jornada-lista {
-      list-style: none;
-      padding: 0;
-      font-size: 18px;
-    }
+      .jornada-lista li {
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #cbd5e1;
+      }
 
-    .jornada-lista li {
-      margin: 15px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #cbd5e1;
-    }
+      .close {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #ffffff;
+      }
 
-    .close {
-      position: absolute;
-      right: 20px;
-      top: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #ffffff;
-    }
+      .close:hover {
+        color: #4fd1c5;
+      }
+    </style>
+  </head>
 
-    .close:hover {
-      color: #4fd1c5;
-    }
-  </style>
-</head>
+  <body>
+    <header>
+      <h1 id="logo-title">DSDM Learning</h1>
+      <button class="menu-btn">
+        <div class="menu-icon"></div>
+      </button>
+      <div id="user-info" style="display: none"></div>
+      <nav class="nav-menu">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="aprendizagem.html">Aprendizagem</a>
+        <a href="faq.html">FAQ</a>
+        <a href="certificado.html">Certificado</a>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <h1 id="logo-title">DSDM Learning</h1>
-    <button class="menu-btn">
-      <div class="menu-icon"></div>
+    <button
+      id="trilha-btn"
+      title="Ver Trilha da Jornada"
+      style="background-color: #4fd1c5; color: black"
+    >
+      <i class="fas fa-route"></i> Jornada do Usuário
     </button>
-    <div id="user-info" style="display: none"></div>
-    <nav class="nav-menu">
-      <a href="index.html">Início</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="aprendizagem.html">Aprendizagem</a>
-      <a href="faq.html">FAQ</a>
-      <a href="certificado.html">Certificado</a>
-    </nav>
-  </header>
 
-  <button id="trilha-btn" title="Ver Trilha da Jornada" style="background-color: #4fd1c5; color: black;">
-    <i class="fas fa-route"></i> Jornada do Usuário
-  </button>
-
-  <div id="trilha-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Trilha Recomendada de Estudos</h2>
-      <ol class="jornada-lista">
-        <li>1°&nbsp;<i class="fas fa-info-circle"></i> Sobre</li>
-        <li>2°&nbsp;<i class="fas fa-book-open"></i> Aprendizagem</li>
-        <li>3°&nbsp;<i class="fas fa-question-circle"></i> FAQ</li>
-        <li>4°&nbsp;<i class="fas fa-file-contract"></i> Certificado</li>
-      </ol>
+    <div id="trilha-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Trilha Recomendada de Estudos</h2>
+        <ol class="jornada-lista">
+          <li>1°&nbsp;<i class="fas fa-info-circle"></i> Sobre</li>
+          <li>2°&nbsp;<i class="fas fa-book-open"></i> Aprendizagem</li>
+          <li>3°&nbsp;<i class="fas fa-question-circle"></i> FAQ</li>
+          <li>4°&nbsp;<i class="fas fa-file-contract"></i> Certificado</li>
+        </ol>
+      </div>
     </div>
-  </div>
 
-  <main>
-    <section class="hero fade-in">
-      <h2>Aprenda DSDM de forma interativa</h2>
-      <p>
-        Explore conteúdos didáticos, quizzes e ferramentas que facilitam o uso
-        do DSDM em projetos reais.
-      </p>
-      <button onclick="startSobre()">
-        <i class="fas fa-info-circle"></i>&nbsp;Sobre
-      </button>
-      <button onclick="startAprendizagem()">
-        <i class="fas fa-book-open"></i>&nbsp;Aprendizagem
-      </button>
-      <button onclick="startFaq()">
-        <i class="fas fa-clipboard-question"></i>&nbsp;FAQ
-      </button>
-      <button onclick="startCertificado()">
-        <i class="fa-solid fa-file-contract"></i>&nbsp;Certificado
-      </button>
-    </section>
-  </main>
+    <main>
+      <section class="hero fade-in">
+        <h2>Aprenda DSDM de forma interativa</h2>
+        <p>
+          Explore conteúdos didáticos, quizzes e ferramentas que facilitam o uso
+          do DSDM em projetos reais.
+        </p>
+        <button onclick="startSobre()">
+          <i class="fas fa-info-circle"></i>&nbsp;Sobre
+        </button>
+        <button onclick="startAprendizagem()">
+          <i class="fas fa-book-open"></i>&nbsp;Aprendizagem
+        </button>
+        <button onclick="startFaq()">
+          <i class="fas fa-clipboard-question"></i>&nbsp;FAQ
+        </button>
+        <button onclick="startCertificado()">
+          <i class="fa-solid fa-file-contract"></i>&nbsp;Certificado
+        </button>
+      </section>
+    </main>
 
-  <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
+    <footer>&copy; 2025 DSDM Learning. Todos os direitos reservados.</footer>
 
-  <script src="src/scripts/auth.js"></script>
-  <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/auth.js"></script>
+    <script src="src/scripts/script.js"></script>
 
-  <script>
-    $(document).ready(function () {
-      $('#trilha-btn').on('click', function () {
-        $('#trilha-modal').fadeIn();
-      });
+    <script>
+      $(document).ready(function () {
+        $("#trilha-btn").on("click", function () {
+          $("#trilha-modal").fadeIn();
+        });
 
-      $('.close').on('click', function () {
-        $('#trilha-modal').fadeOut();
-      });
+        $(".close").on("click", function () {
+          $("#trilha-modal").fadeOut();
+        });
 
-      $(window).on('click', function (e) {
-        if ($(e.target).is('#trilha-modal')) {
-          $('#trilha-modal').fadeOut();
+        $(window).on("click", function (e) {
+          if ($(e.target).is("#trilha-modal")) {
+            $("#trilha-modal").fadeOut();
+          }
+        });
+
+        if (localStorage.getItem("openModal") === "true") {
+          $("#trilha-modal").fadeIn();
+          localStorage.removeItem("openModal");
         }
       });
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
